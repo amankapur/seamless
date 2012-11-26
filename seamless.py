@@ -1,4 +1,5 @@
 import sublime, sublime_plugin
+import gnosis.xml.pickle as xml_pickle
 
 # create an asynchronous communication stream (messaging protocol) http://coder.cl/products/pyxser/
 # http://xmpppy.sourceforge.net/ 
@@ -13,7 +14,11 @@ class ExampleCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		
 		def on_modified(self, view):
-			Send_data = view.
+			Send_data =  xml_pickle.dumps(view)
+			print Send_data
+			print view
+
+			
 		" 
 		TO DO :
 
