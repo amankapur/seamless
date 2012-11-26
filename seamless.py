@@ -6,11 +6,15 @@ import sublime, sublime_plugin
 # use the pyxser library to serialize the 'view' object on both ends
 # http://coder.cl/products/pyxser/
 
+Send_data = 0
+Recv_data = 0
 
 class ExampleCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		""" 
-
+		
+		def on_modified(self, view):
+			Send_data = view.
+		" 
 		TO DO :
 
 		sublime EVENT LISTEn on_modified(view)	
@@ -35,8 +39,6 @@ class Server():
         upon an event, the listener will create an XML stream which is sent over a protocol to the IP
         server: will have a listener which listens for XML stream activity (from user B)
         when it receives an XML event, it will update user A's read_data with the information in the tag
-
-
 
 
         possible methods of sending data
