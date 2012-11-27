@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-import gnosis.xml.pickle as xml_pickle
+#import gnosis.xml.pickle as xml_pickle
 
 # create an asynchronous communication stream (messaging protocol) http://coder.cl/products/pyxser/
 # http://xmpppy.sourceforge.net/ 
@@ -11,15 +11,17 @@ Send_data = 0
 Recv_data = 0
 
 class ExampleCommand(sublime_plugin.TextCommand):
-	def run(self, edit):
-		
-		def on_modified(self, view):
-			Send_data =  xml_pickle.dumps(view)
-			print Send_data
-			print view
 
-			
-		" 
+	#def run(self, edit):
+	#	self.view.insert(edit, 0, "  plugin started")
+
+	def on_modified(self, view):
+		#Send_data =  xml_pickle.dumps(view)
+		#print Send_data
+		self.view.insert(edit, 0, " MODIFIED ")
+            
+		
+		"""
 		TO DO :
 
 		sublime EVENT LISTEn on_modified(view)	
