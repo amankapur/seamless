@@ -29,19 +29,19 @@ class SeamlessCommand(sublime_plugin.EventListener):
                 print self.Send_data
                 #print view.sel()
                 print "onmod recv", self.Recv_data
-                self.update(view, '')
+
                         
 
         def on_post_save(self, view):
-                print "on_save called"
-                self.Recv_data = "apples"
-                print self.Recv_data
+                #print "on_save called"
+                #self.Recv_data = "apples"
+                #print self.Recv_data
+                self.update(view, '')
 
         def update(self, view, string):
                 print "recv", self.Recv_data
-                while 1: 
-                        if(self.Recv_data != 0):
-                                edit = view.begin_edit()
-                                view.insert(edit, 0, self.Recv_data)
-                                self.Recv_data = 0
+                if(self.Recv_data != 0):
+                        edit = view.begin_edit()
+                        view.insert(edit, 0, self.Recv_data)
+                        self.Recv_data = 0
 
