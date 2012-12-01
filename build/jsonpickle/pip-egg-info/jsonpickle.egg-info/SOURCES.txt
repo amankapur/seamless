@@ -1,0 +1,12 @@
+README.rst
+jsonpickle/__init__.py
+jsonpickle/compat.py
+jsonpickle/handlers.py
+jsonpickle/pickler.py
+jsonpickle/tags.py
+jsonpickle/unpickler.py
+jsonpickle/util.py
+pip-egg-info/jsonpickle.egg-info/PKG-INFO
+pip-egg-info/jsonpickle.egg-info/SOURCES.txt
+pip-egg-info/jsonpickle.egg-info/dependency_links.txt
+pip-egg-info/jsonpickle.egg-info/top_level.txt
