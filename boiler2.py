@@ -24,7 +24,7 @@ class SeamlessChat(ClientXMPP):
         print "******************************************" + self.Recv_data
 
     def sendMessage(self, msg):
-        self.send_message(mto="james.wu.jimmy@gmail.com",
+        self.send_message(mto="butteryseamless@gmail.com",
                           mbody=msg,
                           mtype='chat')
 
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     #logging.basicConfig(level=logging.DEBUG,
     #                    format='%(levelname)-8s %(message)s')
 
-    xmpp = SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
+    xmpp = SeamlessChat('olinseamlesstest@gmail.com', 'seamless1')
     xmpp.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
     xmpp.connect()
     xmpp.process(block=False)

@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-import pickle as xml_pickle
+import seamlesspickle as xml_pickle
 import json
 import inspect
 import thread
