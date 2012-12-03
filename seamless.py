@@ -1,8 +1,9 @@
 import sublime, sublime_plugin
-import seamlesspickle as xml_pickle
+import pickle as xml_pickle
 import json
 import inspect
 import thread
+import SeamlessClient as client
 from time import sleep
 
 # create an asynchronous communication stream (messaging protocol) http://coder.cl/products/pyxser/
@@ -21,6 +22,7 @@ class SeamlessCommand(sublime_plugin.EventListener):
                 print 'thread runnin'
                 print self.Recv_data, 'printing'
                 thread.start_new_thread(self.update, (view,''))
+                
 
         def on_modified(self, view):
 

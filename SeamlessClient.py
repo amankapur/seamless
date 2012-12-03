@@ -28,23 +28,14 @@ class SeamlessChat(ClientXMPP):
                           mbody=msg,
                           mtype='chat')
 
+    def SeamlessStart():
+        #logging.basicConfig(level=logging.DEBUG,
+        #                    format='%(levelname)-8s %(message)s')
 
-#if __name__ == '__main__':
-def SeamlessStart():
-    #logging.basicConfig(level=logging.DEBUG,
-    #                    format='%(levelname)-8s %(message)s')
+        xmpp = SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
+        xmpp.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
+        xmpp.connect()
+        xmpp.process(block=False)
 
-    xmpp = SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
-    xmpp.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
-    xmpp.connect()
-    xmpp.process(block=False)
-
-    while 1:
-     inpu = raw_input("Enter message: ")
-     if inpu == "Exit":
-         exit()
-     else:
-         xmpp.sendMessage(inpu)
-
-def exit():
-    xmpp.disconnect()
+    def exit():
+        xmpp.disconnect()
