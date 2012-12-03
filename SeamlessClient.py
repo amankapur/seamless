@@ -24,23 +24,27 @@ class SeamlessChat(ClientXMPP):
         print "******************************************" + self.Recv_data
 
     def sendMessage(self, msg):
-        self.send_message(mto="butteryseamless@gmail.com",
+        self.send_message(mto="james.wu.jimmy@gmail.com",
                           mbody=msg,
                           mtype='chat')
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def SeamlessStart():
     #logging.basicConfig(level=logging.DEBUG,
     #                    format='%(levelname)-8s %(message)s')
 
-    xmpp = SeamlessChat('olinseamlesstest@gmail.com', 'seamless1')
+    xmpp = SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
     xmpp.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
     xmpp.connect()
     xmpp.process(block=False)
 
     while 1:
      inpu = raw_input("Enter message: ")
-     if inpu == "fuck":
-         xmpp.disconnect()
+     if inpu == "Exit":
+         exit()
      else:
          xmpp.sendMessage(inpu)
+
+def exit():
+    xmpp.disconnect()
