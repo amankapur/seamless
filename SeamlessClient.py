@@ -19,23 +19,14 @@ class SeamlessChat(ClientXMPP):
         self.send_presence()
         self.get_roster()
 
-    def recvMessage(self, msg):
+    def recv(self, msg):
         self.Recv_data = msg;
-        print "******************************************" + self.Recv_data
+        #print "******************************************" + self.Recv_data
 
-    def sendMessage(self, msg):
-        self.send_message(mto="james.wu.jimmy@gmail.com",
+    def send(self, msg):
+        self.send_message(mto="amankapur91@gmail.com",
                           mbody=msg,
                           mtype='chat')
-
-    def SeamlessStart():
-        #logging.basicConfig(level=logging.DEBUG,
-        #                    format='%(levelname)-8s %(message)s')
-
-        xmpp = SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
-        xmpp.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
-        xmpp.connect()
-        xmpp.process(block=False)
 
     def exit():
         xmpp.disconnect()

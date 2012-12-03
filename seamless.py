@@ -22,8 +22,15 @@ class SeamlessCommand(sublime_plugin.EventListener):
                 print 'thread runnin'
                 print self.Recv_data, 'printing'
                 thread.start_new_thread(self.update, (view,''))
-                
 
+                chat = client('butteryseamless@gmail.com', 'OlinCollege')
+                chat.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
+                chat.connect()
+                chat.process(block=False)
+                chat.send("test")
+			
+				
+                
         def on_modified(self, view):
 
                 reg = sublime.Region(0, 10000)
