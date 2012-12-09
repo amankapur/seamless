@@ -1,39 +1,30 @@
-import sys
 import sublime, sublime_plugin
-import pickle as xml_pickle
-import json
-import inspect
-import thread
-import SeamlessClient as client
 from time import sleep
-
-
+import os, sys
+import socket
+from threading import Thread
 
 class SeamlessCommand(sublime_plugin.EventListener):
         
         Send_data = 0
         Recv_data = 0
+        send_path = "/tmp/seamless-send"
+        recv_path = "/tmp/seamless-recv"
+        server = ''
+        client = ''
 
         def on_load(self, view):                
-                print 'thread runnin'
-                print self.Recv_data, 'printing'
-                thread.start_new_thread(self.update, (view,''))
+                print 'on_load'
+                #self.client = self.start_sendIPC()
+                #t = Thread(target = self.start_recvIPC(), args=(self, ''))
+                self.start_recvIPC()
 
-                chat = client('butteryseamless@gmail.com', 'OlinCollege')
-                chat.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
-                chat.connect()
-                chat.process(block=False)
-                chat.send("test")
-			
-				
-                
         def on_modified(self, view):
 
                 reg = sublime.Region(0, 10000)
                 self.Send_data = str(view.substr(reg))
                 print self.Send_data
-                #print view.sel()
-                print "onmod recv", self.Recv_data
+                #self.client.send(self.Send_data)
                 self.update(view, '')
 
         def on_post_save(self, view):
@@ -44,8 +35,26 @@ class SeamlessCommand(sublime_plugin.EventListener):
 
         def update(self, view, string):
                 print "recv", self.Recv_data
-                while(self.Recv_data != 0):
+                datagram = self.server.recv( 1024 )
+                        
+                if datagram :
                         edit = view.begin_edit()
-                        view.insert(edit, 0, self.Recv_data)
+                        view.insert(edit, 0, datagram)
                         self.Recv_data = 0
+                        view.end_edit(edit)
 
+        def start_sendIPC(self):
+                if os.path.exists(self.send_path):
+                        client = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+                        client.connect(self.send_path)
+                        print "connected"
+                        return client
+                else:
+                        print "path doesnt exist, creating"
+
+        def start_recvIPC(self):
+                if os.path.exists(self.recv_path):
+                        os.remove(self.recv_path)
+                self.server = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+                self.server.bind(self.recv_path)
+                                       
