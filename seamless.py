@@ -1,15 +1,11 @@
+import sys
 import sublime, sublime_plugin
-import seamlesspickle as xml_pickle
+import pickle as xml_pickle
 import json
 import inspect
 import thread
 from time import sleep
 
-# create an asynchronous communication stream (messaging protocol) http://coder.cl/products/pyxser/
-# http://xmpppy.sourceforge.net/ 
-# have to send the 'view' object on modified to clients
-# use the pyxser library to serialize the 'view' object on both ends
-# http://coder.cl/products/pyxser/
 
 
 class SeamlessCommand(sublime_plugin.EventListener):

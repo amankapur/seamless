@@ -19,7 +19,7 @@ import copy
 import logging
 import signal
 import socket as Socket
-import ssl
+#import ssl
 import sys
 import threading
 import time
