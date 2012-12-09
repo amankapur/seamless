@@ -4,6 +4,7 @@ import pickle as xml_pickle
 import json
 import inspect
 import thread
+import SeamlessClient as client
 from time import sleep
 
 
@@ -18,6 +19,14 @@ class SeamlessCommand(sublime_plugin.EventListener):
                 print self.Recv_data, 'printing'
                 thread.start_new_thread(self.update, (view,''))
 
+                chat = client('butteryseamless@gmail.com', 'OlinCollege')
+                chat.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
+                chat.connect()
+                chat.process(block=False)
+                chat.send("test")
+			
+				
+                
         def on_modified(self, view):
 
                 reg = sublime.Region(0, 10000)
