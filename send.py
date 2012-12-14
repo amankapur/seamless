@@ -20,10 +20,10 @@ if os.path.exists( os_path ):
         print "Sending 'DONE' shuts down the server and quits."
 
         
-        old_x = ''
+        old_x = ""
         while True:
                 try:
-                        x = seamless.Recv_data
+                        x = str(seamless.Recv_data)
                         if x != old_x:
                                if "" != x:
                                        print "SEND:", x
