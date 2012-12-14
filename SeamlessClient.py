@@ -6,6 +6,7 @@ from sleekxmpp.exceptions import IqError, IqTimeout
 import socket
 import os, os.path
 import time
+from xml.dom.minidom import parse, parseString
 
 
 class SeamlessChat(ClientXMPP):
@@ -25,10 +26,13 @@ class SeamlessChat(ClientXMPP):
     def recvMsg(self, msg):
         print "Message received!"
 
-        self.Recv_data = str(msg)
-        print self.Recv_data
+        string = str(msg)
+        proc = parseString(string)
+        inner = proc.getElementsByTagName("body")[0].firstChild
+        self.Recv_data = inner.nodeValue
+        
         #server.send(self.Recv_data)
-        #print "Sent to slave"
+        print self.Recv_data
 
     def sendMsg(self, msg, sendto):
         self.send_message(mto=sendto,
