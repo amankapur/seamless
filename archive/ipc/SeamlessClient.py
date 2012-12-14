@@ -14,6 +14,7 @@ class SeamlessChat(ClientXMPP):
         ClientXMPP.__init__(self, jid, password)
         self.Recv_data = 0
         self.Send_data = 0
+        
 
         self.add_event_handler("session_start", self.session_start)
         self.add_event_handler("message", self.recvMsg)
@@ -23,21 +24,19 @@ class SeamlessChat(ClientXMPP):
         self.get_roster()
 
     def recvMsg(self, msg):
-        print "Message received!"
-
         self.Recv_data = str(msg)
-        print self.Recv_data
+        print "Message received. Type PRINTRECV into the client console to view."
         #server.send(self.Recv_data)
         #print "Sent to slave"
 
-    def sendMsg(self, msg, sendto):
-        self.send_message(mto=sendto,
+    def sendMsg(self, msg):
+        self.send_message(mto="olinseamlesstest@gmail.com",
                           mbody=msg,
                           mtype='chat')
 
-    def exit(self):
-        self.disconnect()
-'''
+    def exit():
+        xmpp.disconnect()
+
 if os.path.exists( "/tmp/python_unix_sockets_example" ):
         os.remove( "/tmp/python_unix_sockets_example" )
 print "Opening socket..."
@@ -75,4 +74,3 @@ print "-" * 20 + " Shutting down..."
 server.close()
 os.remove( "/tmp/python_unix_sockets_example" )
 print "Done"
-'''

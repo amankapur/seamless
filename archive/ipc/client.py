@@ -1,5 +1,6 @@
 import socket
 import os, os.path
+import SeamlessClient
 
 print "Connecting..."
 if os.path.exists( "/tmp/python_unix_sockets_example" ):
@@ -17,6 +18,11 @@ if os.path.exists( "/tmp/python_unix_sockets_example" ):
                                 if "DONE" == x:
                                         print "Shutting down."
                                         break
+                                elif "GET" == x:
+                                        print "Getting from SeamlessClient"
+                                        recvmsg = client.recv( 1024 );
+                                        print "Got it!"
+                                        print recvmsg
                 except KeyboardInterrupt, k:
                         print "Shutting down."
                         client.close()
