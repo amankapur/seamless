@@ -24,7 +24,7 @@ class SeamlessChat(ClientXMPP):
         self.get_roster()
 
     def recvMsg(self, msg):
-        print "Message received!"
+        #print "Message received!"
 
         string = str(msg)
         proc = parseString(string)
