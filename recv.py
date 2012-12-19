@@ -7,7 +7,7 @@ import sys
 import SeamlessClient as chat
 
 
-seamless = chat.SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
+seamless = chat.SeamlessChat('olinseamlesstest@gmail.com', 'seamless1')
 seamless.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
 seamless.connect()
 seamless.process(block=False)
@@ -29,7 +29,7 @@ while True:
         if datagram:
                 #print "-" * 20
                 print datagram
-                seamless.sendMsg(datagram,"olinseamlesstest@gmail.com" )
+                seamless.sendMsg(datagram,"butteryseamless@gmail.com" )
                 print "datagram sent"
                 # chat.send(datagram)
 

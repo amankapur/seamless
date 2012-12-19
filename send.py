@@ -2,7 +2,7 @@ import socket
 import os, os.path
 import SeamlessClient as chat
 
-seamless = chat.SeamlessChat('butteryseamless@gmail.com', 'OlinCollege')
+seamless = chat.SeamlessChat('olinseamlesstest@gmail.com', 'seamless1')
 seamless.use_signals(signals=['SIGHUP','SIGTERM','SIGINT'])
 seamless.connect()
 seamless.process(block=False)
