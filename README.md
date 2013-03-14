@@ -1,5 +1,4 @@
-seamless
-========
+# seamless
 
 sublime plugin for real-time collaboration
 
@@ -14,12 +13,14 @@ Installation:
 Install the sublime text editor.
 
 Next, install the following dependencies, assuming you have pip:
-''''
+
+````
 sudo pip install sleekxmpp
 sudo pip install dnspython
 sudo pip install pyasn1
 sudo pip install pyasn1-modules
-''''
+````
+
 Clone this branch anywhere:
 
   git clone -b stuff git@github.com:fireblade99/seamless.git
